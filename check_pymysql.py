@@ -1,7 +1,7 @@
 import pymysql
 
 def conn():
-    mydb=pymysql.Connect('localhost','root','2202414','mysql',autocommit=True)
+    mydb=pymysql.Connect('localhost','root','password','mysql',autocommit=True)
     return mydb.cursor()
 
 def db_exe(query,c):
