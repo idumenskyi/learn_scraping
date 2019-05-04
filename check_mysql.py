@@ -4,7 +4,7 @@ try:
     connection = mysql.connector.connect(host='localhost',
                              database='python_DB',
                              user='root',
-                             password='2202414')
+                             password='password')
     if connection.is_connected():
        db_Info = connection.get_server_info()
        print("Connected to MySQL database... MySQL Server version on ",db_Info)
