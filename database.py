@@ -15,7 +15,7 @@ try:
     with connection.cursor() as cursor:
 
         # SQL
-        sql = 'SELECT id, title FROM pages WHERE content LIKE "%page content%"'
+        sql = 'SELECT * FROM pages WHERE id = 2'
 
 
         # Execute query.
