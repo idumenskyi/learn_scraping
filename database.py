@@ -1,8 +1,33 @@
-import mysql.connector
-conn = mysql.connector.connect(host='127.0.0.1', user='root', passwd=mypassword, db='scraping')
-cur = conn.cursor()
-cur.execute('USE scraping')
-cur.execute('SELECT * FROM pages WHERE id=1')
-print(cur.fetchone())
-cur.close()
-conn.close()
+import pymysql.cursors
+
+# Connect to the database.
+connection = pymysql.connect(host='127.0.0.1',
+                             user='root',
+                             password='2202414',
+                             db='scraping',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+
+print("connect successful!!")
+
+try:
+
+    with connection.cursor() as cursor:
+
+        # SQL
+        sql = 'SELECT id, title FROM pages WHERE content LIKE "%page content%"'
+
+
+        # Execute query.
+        cursor.execute(sql)
+
+        print("cursor.description: ", cursor.description)
+
+        print()
+
+        for row in cursor:
+            print(row)
+
+finally:
+    # Close connection.
+    connection.close()
